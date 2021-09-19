@@ -1,4 +1,7 @@
 {{#each this.stars as |star|}}
-  {{!-- "in-line if", like a ternary --}}
-  {{if star.full "X" "O"}}
+  <FaIcon
+    @icon="star"
+    {{!-- "in-line if", like a ternary --}}
+    @prefix={{if star.full "fas" "far"}}
+  />
 {{/each}}
