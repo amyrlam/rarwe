@@ -1,1 +1,4 @@
-{{yield}}
+{{#each this.stars as |star|}}
+  {{!-- "in-line if", like a ternary --}}
+  {{if star.full "X" "O"}}
+{{/each}}
