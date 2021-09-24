@@ -5,7 +5,15 @@
     {{#each @model as |song|}}
       <li class="mb-2">
         {{song.title}}
-        <span class="float-right">{{song.rating}}</span>
+        <span class="float-right">
+          {{!-- Way to call components in Ember PascalCase. Pass in arguments with @, and HTML attributes w/o prefix e.g. `class="mt-4"` --}}
+          {{!-- Pre Ember-3.4, called with curly braces e.g. `{{star-rating}}` see https://ember-learn.github.io/ember-octane-vs-classic-cheat-sheet/#component-templates__angle-brackets for more info --}}
+          <StarRating 
+            @rating={{song.rating}} 
+            {{!-- Creates a setter function that sets `song.rating` to whatever value the fn is called with --}}
+            @onUpdate={{set song "rating"}}
+          />
+        </span>
       </li>
     {{/each}}
   </ul>
